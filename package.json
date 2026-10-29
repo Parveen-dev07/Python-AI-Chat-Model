@@ -1,0 +1,13 @@
+{
+  "name": "ai-chat-platform",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix apps/widget",
+    "dev:widget": "npm run dev --prefix apps/widget",
+    "dev:demo": "npm run dev --prefix apps/demo-website",
+    "widget:dev": "pnpm --filter @ai-chat/widget dev",
+    "widget:build": "npm run build --prefix apps/widget",
+    "demo:dev": "pnpm --filter @ai-chat/demo-website dev",
+    "demo:build": "npm run build --prefix apps/demo-website"
+  }
+}

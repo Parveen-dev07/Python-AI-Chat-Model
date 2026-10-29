@@ -1,0 +1,28 @@
+from app.core.config import AIProviderName, Settings
+from app.providers.base import AIProvider
+from app.providers.ollama import OllamaProvider
+from app.providers.openai import OpenAIProvider
+
+
+class ProviderConfigurationError(RuntimeError):
+    pass
+
+
+def create_provider(settings: Settings) -> AIProvider:
+    if settings.ai_provider == AIProviderName.OLLAMA:
+        return OllamaProvider(
+            base_url=settings.ollama_base_url,
+            model=settings.ollama_model,
+            timeout=settings.ai_request_timeout_seconds,
+        )
+    if settings.ai_provider == AIProviderName.OPENAI:
+        if not settings.openai_api_key.strip():
+            raise ProviderConfigurationError(
+                "AI_PROVIDER=openai but OPENAI_API_KEY is empty"
+            )
+        return OpenAIProvider(
+            api_key=settings.openai_api_key,
+            model=settings.openai_model,
+            timeout=settings.ai_request_timeout_seconds,
+        )
+    raise ProviderConfigurationError(f"Unknown AI provider: {settings.ai_provider}")
