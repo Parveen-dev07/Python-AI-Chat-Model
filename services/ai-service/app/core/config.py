@@ -8,6 +8,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class AIProviderName(StrEnum):
     OLLAMA = "ollama"
     OPENAI = "openai"
+    GEMINI = "gemini"
 
 
 class Settings(BaseSettings):
@@ -27,6 +28,9 @@ class Settings(BaseSettings):
     ai_request_timeout_seconds: float = 300.0
     openai_api_key: str = ""
     openai_model: str = "gpt-4o-mini"
+    gemini_api_key: str = ""
+    gemini_model: str = "gemini-3.5-flash"
+    gemini_api_base: str = "https://generativelanguage.googleapis.com/v1beta"
 
     customer_database_url: str = ""
     db_query_timeout_seconds: int = 10

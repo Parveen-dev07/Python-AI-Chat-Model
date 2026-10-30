@@ -48,9 +48,12 @@ async def chat(
         ) from exc
     except AIProviderError as exc:
         logger.warning("AI provider error: %s", exc)
+        detail = "AI provider is temporarily unavailable"
+        if settings.app_env == "development":
+            detail = str(exc)[:500]
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            detail="AI provider is temporarily unavailable",
+            detail=detail,
         ) from exc
     except Exception:
         logger.exception("Chat request failed")

@@ -88,6 +88,8 @@
 .ai-chat-bubble.assistant {
   align-self: flex-start;
   background: var(--ai-chat-border);
+  white-space: pre-line;
+  max-width: 92%;
 }
 
 .ai-chat-bubble.error {

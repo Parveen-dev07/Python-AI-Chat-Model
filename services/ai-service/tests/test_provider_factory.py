@@ -2,6 +2,7 @@ import pytest
 
 from app.core.config import AIProviderName, Settings
 from app.providers.factory import ProviderConfigurationError, create_provider
+from app.providers.gemini import GeminiProvider
 from app.providers.ollama import OllamaProvider
 from app.providers.openai import OpenAIProvider
 
@@ -31,3 +32,19 @@ def test_create_openai_with_key() -> None:
     )
     provider = create_provider(settings)
     assert isinstance(provider, OpenAIProvider)
+
+
+def test_create_gemini_without_key_raises() -> None:
+    settings = Settings(ai_provider=AIProviderName.GEMINI, gemini_api_key="")
+    with pytest.raises(ProviderConfigurationError):
+        create_provider(settings)
+
+
+def test_create_gemini_with_key() -> None:
+    settings = Settings(
+        ai_provider=AIProviderName.GEMINI,
+        gemini_api_key="AIza-test",
+        gemini_model="gemini-2.5-flash",
+    )
+    provider = create_provider(settings)
+    assert isinstance(provider, GeminiProvider)

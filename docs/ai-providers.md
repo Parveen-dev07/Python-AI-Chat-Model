@@ -6,6 +6,7 @@ Set the active provider with `AI_PROVIDER`:
 |-------|-------------|
 | `ollama` | Local Ollama (default for development) |
 | `openai` | OpenAI Chat Completions API |
+| `gemini` | Google Gemini (AI Studio API key) |
 
 ## Ollama
 
@@ -28,6 +29,18 @@ OPENAI_MODEL=gpt-4o-mini
 ```
 
 If `OPENAI_API_KEY` is empty, the service fails at provider creation with a clear configuration error.
+
+## Gemini
+
+Create an API key in [Google AI Studio](https://aistudio.google.com/apikey). Keys usually start with `AIza`.
+
+```env
+AI_PROVIDER=gemini
+GEMINI_API_KEY=AIza...
+GEMINI_MODEL=gemini-3.5-flash
+```
+
+If `GEMINI_API_KEY` is empty, the service fails at provider creation with a clear configuration error.
 
 ## Tool calling
 
