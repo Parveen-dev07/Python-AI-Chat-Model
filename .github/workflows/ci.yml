@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main, master]
+    branches: [main]
   pull_request:
 
 jobs:
@@ -24,7 +24,8 @@ jobs:
         run: ruff check .
       - name: Pytest
         env:
-          AI_PROVIDER: ollama
+          AI_PROVIDER: gemini
+          GEMINI_API_KEY: test-gemini-key
           CUSTOMER_DATABASE_URL: postgresql+psycopg://u:p@127.0.0.1:5432/test
           API_KEY: test-api-key
           DEFAULT_WIDGET_ID: demo-widget

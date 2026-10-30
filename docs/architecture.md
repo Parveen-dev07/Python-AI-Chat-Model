@@ -18,14 +18,14 @@ flowchart TB
     QV[Query validator]
   end
   subgraph external [External systems]
-    OLL[Ollama / OpenAI]
+    LLM[OpenAI / Gemini]
     PG[(Customer PostgreSQL)]
   end
   W -->|HTTPS + API key| API
   API --> TR
   TR --> CS
   CS --> PV
-  PV --> OLL
+  PV --> LLM
   CS --> QV
   CS --> DBI
   DBI --> PG

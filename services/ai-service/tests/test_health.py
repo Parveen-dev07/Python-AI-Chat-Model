@@ -31,4 +31,4 @@ def test_ai_health(client: TestClient) -> None:
     assert resp.status_code == 200
     body = resp.json()
     assert body["status"] == "ok"
-    assert body["provider"] == "ollama"
+    assert body["provider"] == "gemini"

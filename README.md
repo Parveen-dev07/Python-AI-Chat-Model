@@ -19,7 +19,7 @@ python3.12 -m venv .venv
 source .venv/bin/activate
 pip install -e ".[dev]"
 cp .env.example .env
-# Edit CUSTOMER_DATABASE_URL, API_KEY, Ollama settings
+# Edit CUSTOMER_DATABASE_URL, API_KEY, AI provider settings
 uvicorn app.main:app --reload --port 8000
 ```
 

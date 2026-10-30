@@ -6,7 +6,6 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class AIProviderName(StrEnum):
-    OLLAMA = "ollama"
     OPENAI = "openai"
     GEMINI = "gemini"
 
@@ -22,9 +21,7 @@ class Settings(BaseSettings):
     log_level: str = "INFO"
     cors_origins: str = "http://localhost:5173"
 
-    ai_provider: AIProviderName = AIProviderName.OLLAMA
-    ollama_base_url: str = "http://localhost:11434"
-    ollama_model: str = "llama3.2"
+    ai_provider: AIProviderName = AIProviderName.GEMINI
     ai_request_timeout_seconds: float = 300.0
     openai_api_key: str = ""
     openai_model: str = "gpt-4o-mini"

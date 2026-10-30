@@ -4,7 +4,8 @@ import pytest
 from fastapi.testclient import TestClient
 
 # Test env must override any local .env before settings are cached.
-os.environ["AI_PROVIDER"] = "ollama"
+os.environ["AI_PROVIDER"] = "gemini"
+os.environ["GEMINI_API_KEY"] = "test-gemini-key"
 os.environ["CUSTOMER_DATABASE_URL"] = "postgresql+psycopg://u:p@127.0.0.1:5432/test"
 os.environ["API_KEY"] = "test-api-key"
 os.environ["DEFAULT_WIDGET_ID"] = "demo-widget"

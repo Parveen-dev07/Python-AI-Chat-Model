@@ -5,7 +5,7 @@
 - Python 3.12+
 - Node.js 20+ and pnpm 9+
 - PostgreSQL (local or remote)
-- Ollama (optional, for local AI)
+- OpenAI or Gemini API key (for AI answers)
 
 ## Backend
 
@@ -43,8 +43,8 @@ Change `AI_PROVIDER` in `.env` and restart Uvicorn. No code changes required.
 ## Manual integration test
 
 1. Start PostgreSQL with sample data.
-2. Start Ollama with a tool-capable model.
+2. Configure `AI_PROVIDER` and API key in `.env`.
 3. Start the API and widget dev server.
 4. Ask a question that requires a SQL lookup.
 
-If Ollama is unavailable, `/api/v1/health/ai` reports degraded status; chat may fail until the provider is reachable.
+If the AI provider is unavailable, `/api/v1/health/ai` reports degraded status; chat may fail until the provider is reachable.

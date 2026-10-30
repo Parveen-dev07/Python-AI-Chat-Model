@@ -26,7 +26,7 @@ curl -s http://localhost:8000/health/database
 curl -s http://localhost:8000/api/v1/health/ai
 ```
 
-Ollama must be running on port 11434; model should match `OLLAMA_MODEL` in `.env`.
+Set `AI_PROVIDER` and the matching API key in `.env`; model name must match your provider (e.g. `GEMINI_MODEL`).
 
 ## 3. Try good test questions
 
